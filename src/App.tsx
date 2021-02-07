@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import {Club} from './components/Club'
+import {NavBar} from './components/NavBar'
+import { MDBListGroup, MDBContainer } from "mdbreact";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {ClubPage} from './components/ClubPage'
+import {ClubList} from './components/ClubList'
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  
+  return ( 
+    
+      <Router>
+      <Switch>
+        <Route exact path="/" component={ClubList} />
+        <Route exact path="/detailsview/:clubIndex" component={ClubPage} />
+     <div>
+            
+             
+  <MDBListGroup >
+   < ClubList />
+ 
+  </MDBListGroup>
+             
+             
+            
+           </div>
+           </Switch>
+    </Router>
+    
+   
+           
+    
+  )
 }
 
 export default App;
