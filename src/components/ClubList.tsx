@@ -17,12 +17,24 @@ export const ClubList :FC = ():ReactElement  => {
 
   const [clubsAll,setAllClubs] = useState<any>()
   const [clubs, setClubs] = useState<footballClubs>([])
-  const [sort,setSort] = useState<boolean>(true)
+  const [sort,setSort] = useState<any>(true)
+  
+   
  
+ 
+  // JSON.parse(sortState)
+  //console.log(sortState)
+  
+
  
    
 
     useEffect(() => {
+      let sortState2 :any = localStorage.getItem('sortState')
+      sortState2 = JSON.parse(sortState2)
+      console.log(sortState2)
+       setSort(sortState2)
+        console.log(sort)
         fetch('https://public.allaboutapps.at/hiring/clubs.json')
         .then(response => response.json())
         .then((data :any) => {
@@ -32,15 +44,18 @@ export const ClubList :FC = ():ReactElement  => {
           
           console.log(clubData)
           setAllClubs(clubData)
-
-        let clubSorted = data.map( (club: {name:string,country:string,value:number,image:string,european_titles:number},index:number) => <Club name={club.name} index={index} country={club.country} value={club.value} image={club.image} title={club.european_titles} />)
-        .sort(
-          (a:any, b:any) => {
-              return a.props.name > b.props.name ? 1 : -1;
-          }
-      )
-        setClubs(clubSorted)
-         console.log(clubSorted)
+        
+         
+            let clubSorted = data.map( (club: {name:string,country:string,value:number,image:string,european_titles:number},index:number) => <Club name={club.name} index={index} country={club.country} value={club.value} image={club.image} title={club.european_titles} />)
+            .sort(
+              (a:any, b:any) => {
+                  return a.props.name > b.props.name ? 1 : -1;
+              }
+          )
+            setClubs(clubSorted)
+             console.log(clubSorted)
+          
+       
           
          
        
@@ -55,10 +70,14 @@ export const ClubList :FC = ():ReactElement  => {
     console.log(sort)
     
 }
- 
-    
+  if (localStorage.getItem('sortState') === undefined) {
+       localStorage.setItem('sortState',`${sort}`)
+  }
+
+console.log(localStorage.getItem('sortState'))
+
     let clubsByValue;
-    if (!sort) {
+    if (sort ===false) {
       clubsByValue = clubsAll.sort((a:any, b:any) => {
         return a.props.value < b.props.value ? 1 : -1;
         
