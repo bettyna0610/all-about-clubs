@@ -6,13 +6,14 @@ type Props = {
     name:string,
     country:string,
     image:string,
-    value:string,
-    index:number
+    value:number,
+    index:number,
+    title: number
 }
 
-export const Club :FC<Props> = ({name,country,image,value,index}):ReactElement => {
+export const Club :FC<Props> = ({name,country,image,value,index,title}):ReactElement => {
 return (
-    <Link target="_blank" to={{ pathname:`/detailsview/${index}`,state: {indexValue : index, clubName: name, clubImage: image, clubValue:value,clubCountry:country}}} >
+    <Link target="_blank" to={`/detailsview/${index}`} >
       <MDBRow>
       <MDBCol size="12">
       

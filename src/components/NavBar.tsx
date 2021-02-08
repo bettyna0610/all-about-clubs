@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import {
-    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
+    MDBNavbar, MDBNavbarBrand, MDBIcon, MDBBtn, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
     MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
     } from "mdbreact";
 
@@ -26,7 +26,14 @@ import {
         <MDBNavbarBrand>
           <strong className="white-text">all about clubs</strong>
         </MDBNavbarBrand>
-       <button onClick={this.toggle}>Sort</button>
+        <MDBNavbarNav right>
+        <button className="btn btn-outline-success btn-floating btn-lg waves-effect">
+        {!this.state.on ? <MDBIcon className="white-text" size="lg" onClick={this.toggle} icon="sort-amount-down-alt" /> : <MDBIcon className="white-text" onClick={this.toggle} icon="sort-alpha-down" /> 
+        }
+        </button>
+        </MDBNavbarNav>
+       
+       
         </MDBNavbar>
             )
         }

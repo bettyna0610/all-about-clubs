@@ -1,6 +1,7 @@
  import React, {useState, useEffect} from 'react'
- import {MDBNavbar, MDBNavbarBrand,MDBRow,MDBBox} from 'mdbreact'
- //import {MdArrowBack} from "react-icons/md";
+ import {MDBNavbar, MDBNavbarBrand,MDBIcon,MDBCol,MDBRow} from 'mdbreact'
+ import {Link} from 'react-router-dom'
+ //import {MDBIcon} from "react-icons/md";
  
  type State ={
      name:string,
@@ -25,7 +26,7 @@
     //let clubName=""; let clubImage; let clubCountry; let clubValue; let clubTitle
 
        componentDidMount () {
-           /*
+           
         const index = this.props.match.url.split('/')[this.props.match.url.split('/').length-1]
         fetch('https://public.allaboutapps.at/hiring/clubs.json')
         .then(response => response.json())
@@ -34,9 +35,9 @@
          let clubImage = data[index].image
          let clubCountry = data[index].country
          let clubValue = data[index].value
-         let clubTitle = data[index].european_titles*/
+         let clubTitle = data[index].european_titles
 
-         const {clubName,clubImage,clubCountry,clubValue,clubTitle} = this.props.location.state
+        
 
          this.setState({
              name:clubName,
@@ -46,9 +47,9 @@
              title: clubTitle
          })
          
-        }
+        })
     
-      
+    }
       
        
        render() {
@@ -57,8 +58,16 @@
             <div>
                  <MDBNavbar className="nav-color" dark expand="md">
             <MDBNavbarBrand>
-            
-              <strong className="white-text">{name}</strong>
+            <MDBRow>
+            <MDBCol size="3">
+            <Link target="_blank" to="/" className="link" >
+            <MDBIcon icon="arrow-left" />
+            </Link>
+            </MDBCol>
+            <MDBCol size="3">
+            <strong className="white-text">{name}</strong>
+            </MDBCol>             
+              </MDBRow>
             </MDBNavbarBrand>
            
             </MDBNavbar>
