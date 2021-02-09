@@ -11,8 +11,11 @@ import {
         }
         
         toggle = () => {
+          let parseStorage :any = localStorage.getItem('sortState')
+          console.log(JSON.parse(parseStorage))
+          let buttonState = JSON.parse(parseStorage)
           this.setState({
-            on: !this.state.on
+            on: !buttonState
           })
           this.props.onClick(this.state.on)
         }
@@ -21,6 +24,7 @@ import {
         
 
         render() {
+         
             return (
                 <MDBNavbar className="nav-color" dark expand="md" scrolling fixed="top">
         <MDBNavbarBrand>
