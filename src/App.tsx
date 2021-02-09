@@ -18,7 +18,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={ClubList} />
         <Route exact path="/detailsview/:clubIndex" component={ClubPage} />
-     <div>
+        <MDBContainer fluid>
             
              
   <MDBListGroup >
@@ -28,7 +28,7 @@ function App() {
              
              
             
-           </div>
+  </MDBContainer>
            </Switch>
     </Router>
     

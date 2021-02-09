@@ -22,9 +22,9 @@ import {
 
         render() {
             return (
-                <MDBNavbar className="nav-color" dark expand="md">
+                <MDBNavbar className="nav-color" dark expand="md" scrolling fixed="top">
         <MDBNavbarBrand>
-          <strong className="white-text">all about clubs</strong>
+          <strong className="white-text ml-4">all about clubs</strong>
         </MDBNavbarBrand>
         <MDBNavbarNav right>
         <button className="btn btn-outline-success btn-floating btn-lg waves-effect">

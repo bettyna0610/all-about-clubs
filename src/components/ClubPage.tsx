@@ -8,8 +8,9 @@
      image:string,
      country:string,
      value:number,
-     title: number
-
+     title: number,
+     loading:boolean,
+     error: boolean
  }
  
 
@@ -20,7 +21,9 @@
      image:"",
      country:"",
      value:0,
-     title:0
+     title:0,
+     loading:true,
+     error: false
     }
     
     //let clubName=""; let clubImage; let clubCountry; let clubValue; let clubTitle
@@ -29,8 +32,17 @@
            
         const index = this.props.match.url.split('/')[this.props.match.url.split('/').length-1]
         fetch('https://public.allaboutapps.at/hiring/clubs.json')
-        .then(response => response.json())
+        .then(response => { if (!response.ok) {
+            this.setState({
+             error:true
+            })
+       } else {
+         return response.json() }
+       })
         .then((data) => {
+            this.setState({
+                loading:false
+            })
          let clubName = data[index].name
          let clubImage = data[index].image
          let clubCountry = data[index].country
@@ -71,13 +83,16 @@
             </MDBNavbarBrand>
            
             </MDBNavbar>
-            <div  style={{backgroundColor:"#333333",textAlign:"center"}} >
+            {this.state.loading && <div className="text-center"><div style={{marginTop:"200px", width:"100px",height:"100px"}} className=" spinner-border text-success" role="status"></div>
+  <span className="sr-only">Loading...</span>
+</div>}
+            { this.state.error ? <div style={{marginTop:200, textAlign:'center',color:'red'}}>Die Daten sind im moment nicht erreichbar.</div> : <div><div  style={{backgroundColor:"#333333",textAlign:"center"}} >
             <img src={image} width="300px" height="300px" />
             <p style={{color:"white",textAlign:"left"}}><strong>{country}</strong></p>
             </div>
             
             <div>Der Club <strong>{name}</strong>  aus {country} hat einen Wert von {value} Millionen Euro.</div>
-            <div><strong>{name}</strong> konnte bislang {title} Siege auf europäischer Ebene erreichen.</div>
+            <div><strong>{name}</strong> konnte bislang {title} Siege auf europäischer Ebene erreichen.</div> </div>}
             </div>
             
         )

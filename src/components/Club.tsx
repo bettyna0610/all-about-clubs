@@ -20,14 +20,14 @@ return (
      <MDBListGroupItem hover>
      
     
-     <MDBCol size="7">
+     <MDBCol >
      <MDBRow>
-     <MDBCol size="1" >
-     <img width="40px" height="40px" src={image}/></MDBCol>
-     <MDBCol size="11">
-     <MDBRow> <MDBCol><strong>{name}</strong></MDBCol></MDBRow>
+     <MDBCol lg="1">
+     <img className="img-fluid" style={{minWidth:"10px",minHeight:"10px"}} src={image}/></MDBCol>
+     <MDBCol lg="11" >
+     <MDBRow> <MDBCol  ><strong>{name}</strong></MDBCol></MDBRow>
      <MDBRow>
-     <MDBCol> <strong>{country}</strong> {`${value} Millionen Euro`}</MDBCol>
+     <MDBCol md="9" sm="9"> <strong>{country}</strong> {`${value} Millionen Euro`}</MDBCol>
      </MDBRow>
      
       </MDBCol>
