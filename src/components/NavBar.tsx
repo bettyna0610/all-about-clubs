@@ -3,7 +3,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBIcon, MDBNavbarNav} from "mdbreact";
 
     export class NavBar extends React.Component<{onClick:any}> {
         state = {
-          on: localStorage.getItem('sortState')
+          on: localStorage.getItem('sortState') || true
         }
         
         toggle = () => {
@@ -21,6 +21,13 @@ import { MDBNavbar, MDBNavbarBrand, MDBIcon, MDBNavbarNav} from "mdbreact";
         
 
         render() {
+          let parsedState;
+          if( typeof this.state.on === "string") {
+            parsedState = JSON.parse(this.state.on)
+          } else {
+            parsedState = this.state.on
+          }
+          console.log(typeof parsedState)
          
             return (
                 <MDBNavbar className="nav-color" dark expand="md" scrolling fixed="top" >
@@ -29,7 +36,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBIcon, MDBNavbarNav} from "mdbreact";
                   </MDBNavbarBrand>
                   <MDBNavbarNav right>
                     <button className="btn btn-outline-success btn-floating btn-lg p-0" onClick={this.toggle}>
-                    {!this.state.on ? <MDBIcon className="white-text" size="lg"  icon="sort-amount-down-alt" />
+                    {parsedState ? <MDBIcon className="white-text" size="lg"  icon="sort-amount-down-alt" />
                      : <MDBIcon className="white-text" onClick={this.toggle} icon="sort-alpha-down" /> }
                     </button>
                   </MDBNavbarNav>
