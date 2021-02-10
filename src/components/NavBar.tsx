@@ -3,7 +3,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBIcon, MDBNavbarNav} from "mdbreact";
 
     export class NavBar extends React.Component<{onClick:any}> {
         state = {
-          on: false
+          on: localStorage.getItem('sortState')
         }
         
         toggle = () => {
