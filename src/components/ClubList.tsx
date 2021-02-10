@@ -19,7 +19,7 @@ export const ClubList :FC = ():ReactElement  => {
 
  
   const [clubs, setClubs] = useState<footballClubs>([])
-  const [sort,setSort] = React.useState<any>(
+  const [sort,setSort] = useState<any>(
     localStorage.getItem('sortState') || true
   );
   const [loading, setLoading] = useState(true)
@@ -27,11 +27,8 @@ export const ClubList :FC = ():ReactElement  => {
   
   
   const onClick = (childData :boolean) => {
-    console.log(childData)
     setSort(childData)
-    console.log(sort)
     sortClubs(childData)
-    console.log(sort)
   }
  
   const sortClubs = (sortType : boolean | string) => {
@@ -52,7 +49,6 @@ export const ClubList :FC = ():ReactElement  => {
           } else {
             sortType = false
           }
-
       }
        if (sortType === true) {
         let clubSorted = clubData.sort(
@@ -72,7 +68,7 @@ export const ClubList :FC = ():ReactElement  => {
    
     
     useEffect(() => {
-       console.log(sort)
+
         sortClubs(sort)
           
     },[])
@@ -84,10 +80,11 @@ export const ClubList :FC = ():ReactElement  => {
                 <MDBRow >
                   <NavBar onClick={onClick} />
                 </MDBRow>
-                <MDBRow>
+                <MDBRow style={{marginTop:10}}>
                  {error ?  <div style={{marginTop:200, textAlign:'center',color:'red'}}>
                  <FormattedMessage id="error" defaultMessage="The data is not available at the moment." />
-                 </div> : clubs}
+                 </div> 
+                 : clubs}
                 { loading && <div className="text-center"><div style={{marginTop:"200px", width:"100px",height:"100px"}} className=" spinner-border text-success" role="status"></div>
                  <span className="sr-only">Loading...</span></div>}
                 </MDBRow >

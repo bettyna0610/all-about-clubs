@@ -88,7 +88,7 @@
                   <FormattedMessage id="error" defaultMessage="The data is not available at the moment." /></div> 
                   : <div>
                       <div  style={{backgroundColor:"#333333",textAlign:"center"}} >
-                           <img src={image} width="300px" height="300px" />
+                           <img src={image} width="300px" height="300px" className="mt-3" />
                               <p  className="ml-3" style={{color:"white",textAlign:"left"}}><strong>{country}</strong></p>
                       </div>
             
