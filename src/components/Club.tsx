@@ -1,6 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import {  MDBListGroupItem, MDBCol, MDBRow } from "mdbreact";
 import {Link} from 'react-router-dom'
+import {FormattedMessage} from "react-intl"
 
 type Props = {
     name:string,
@@ -11,39 +12,23 @@ type Props = {
     title: number
 }
 
-export const Club :FC<Props> = ({name,country,image,value,index,title}):ReactElement => {
+export const Club :FC<Props> = ({name,country,image,value,index}):ReactElement => {
 return (
-    <Link target="_blank" to={`/detailsview/${index}`} >
-      <MDBRow>
-      <MDBCol size="12">
-      
-     <MDBListGroupItem hover>
-     
-    
-     <MDBCol >
-     <MDBRow>
-     <MDBCol lg="1">
-     <img className="img-fluid" style={{minWidth:"10px",minHeight:"10px"}} src={image}/></MDBCol>
-     <MDBCol lg="11" >
-     <MDBRow> <MDBCol  ><strong>{name}</strong></MDBCol></MDBRow>
-     <MDBRow>
-     <MDBCol md="9" sm="9"> <strong>{country}</strong> {`${value} Millionen Euro`}</MDBCol>
-     </MDBRow>
-     
-      </MDBCol>
-      </MDBRow>
-     </MDBCol>
-     
-      
-     </MDBListGroupItem>
-     
-     </MDBCol>
-
-    </MDBRow>
-
-    </Link>
-    
-    
+    <Link target="_blank" to={`/detailsview/${index}`} > 
+      <MDBListGroupItem hover> 
+       <MDBRow>
+        <MDBCol lg="1" className="mobile-image" >
+          <img className="img-fluid" style={{width:"60px",height:"60px"}}  src={image}/>
+        </MDBCol>
+        <MDBCol lg="11" className="mobile-info">
+          <MDBCol><strong>{name}</strong></MDBCol>
+          <MDBCol> 
+            <strong><FormattedMessage id="club-country" values={{country}} /></strong> {value} <FormattedMessage id="club-value"/>
+          </MDBCol>
+        </MDBCol>
+       </MDBRow> 
+      </MDBListGroupItem>
+    </Link>    
      
 )
 }

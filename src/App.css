@@ -45,3 +45,35 @@
 .link {
   color: #FFF;
 }
+
+body {
+  padding-top: 65px;
+}
+
+@media (max-width: 425px) {
+  .mobile-image {
+    width: 17% !important;
+    padding-right:0px !important;
+    padding-left:0px !important;
+    
+  }
+  .mobile-info {
+    width: 83% !important;
+    padding-left:0px !important;
+    padding-right:0px !important;
+  }
+  body {
+    padding-top:57px
+  }
+ }
+ 
+ @media (min-width: 426px) and (max-width: 768px) { 
+   .mobile-image {
+    width: 12% !important;
+    
+  }
+  .mobile-info {
+    width: 88% !important;
+  }
+   }
+  

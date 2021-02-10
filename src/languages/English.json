@@ -1,0 +1,8 @@
+{
+    "club-country":"{country}",
+    "club-value":"million euros",
+    "club-detail-value":"from {country} is worth {value} millions of euros.",
+    "club-title": "has so far achieved {title} victories at European level.",
+    "error":"The data is not available at the moment.",
+    "club":"The club"
+}

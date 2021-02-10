@@ -1,0 +1,8 @@
+{
+    "club-country":"{country}",
+    "club-value":"Millionen Euro",
+    "club-detail-value":"aus {country} hat einen Wert von {value} Millionen Euro.",
+    "club-title":" konnte bislang {title} Siege auf europäischer Ebene erreichen.",
+    "error":"Die Daten sind im moment nicht erreichbar.",
+    "club":"Der Club" 
+}
