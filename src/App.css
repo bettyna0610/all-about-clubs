@@ -9,6 +9,7 @@
 
 body {
   padding-top: 65px;
+  font-weight:100
 }
 
 @media (max-width: 425px) {
@@ -38,4 +39,5 @@ body {
     width: 88% !important;
   }
    }
+
   

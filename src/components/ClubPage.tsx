@@ -89,10 +89,10 @@
                   : <div>
                       <div  style={{backgroundColor:"#333333",textAlign:"center"}} >
                            <img src={image} width="300px" height="300px" className="mt-3" />
-                              <p  className="ml-3" style={{color:"white",textAlign:"left"}}><strong>{country}</strong></p>
+                              <p  className="ml-3" style={{color:"white",textAlign:"left"}}><h4><strong>{country}</strong></h4></p>
                       </div>
             
-                      <div className="ml-3"><FormattedMessage id="club" /> <strong>{name}</strong>
+                      <div className="ml-3"><FormattedMessage id="club" />  <strong>{name}</strong>
                        <FormattedMessage id="club-detail-value" values={{country,value}} />
                       </div>
                      <div className="ml-3"><strong>{name}</strong> <FormattedMessage id="club-title" values={{title}}/> </div>
