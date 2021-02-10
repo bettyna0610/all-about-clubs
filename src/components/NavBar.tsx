@@ -7,12 +7,16 @@ import { MDBNavbar, MDBNavbarBrand, MDBIcon, MDBNavbarNav} from "mdbreact";
         }
         
         toggle = () => {
-          //let parseStorage :any = localStorage.getItem('sortState')
-          //let buttonState = JSON.parse(parseStorage)
+          
+          let parseStorage :any = localStorage.getItem('sortState')
+          let buttonState = JSON.parse(parseStorage)
+          console.log(buttonState)
           this.setState({
-            on: !buttonState
+            on: !this.state.on
           })
-         // this.props.onClick(this.state.on)
+         
+         this.props.onClick(!buttonState)
+         console.log(this.state.on)
         }
 
        
@@ -27,7 +31,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBIcon, MDBNavbarNav} from "mdbreact";
                   </MDBNavbarBrand>
                   <MDBNavbarNav right>
                     <button className="btn btn-outline-success btn-floating btn-lg p-0" onClick={this.toggle}>
-                    {!this.state.on ? <MDBIcon className="white-text" size="lg"  icon="sort-amount-down-alt" />
+                    {this.state.on ? <MDBIcon className="white-text" size="lg"  icon="sort-amount-down-alt" />
                      : <MDBIcon className="white-text" onClick={this.toggle} icon="sort-alpha-down" /> }
                     </button>
                   </MDBNavbarNav>

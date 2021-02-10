@@ -27,10 +27,11 @@ export const ClubList :FC = ():ReactElement  => {
   
   
   const onClick = (childData :boolean) => {
-  
-   setSort(childData)
-    sortClubs(sort)
-    
+    console.log(childData)
+    setSort(childData)
+    console.log(sort)
+    sortClubs(childData)
+    console.log(sort)
   }
  
   const sortClubs = (sortType : boolean | string) => {
@@ -44,7 +45,7 @@ export const ClubList :FC = ():ReactElement  => {
     })
     .then((data :any) => {
       setLoading(false)
-      let clubData :any  = data.map( (club: {name:string,country:string,value:number,image:string,european_titles:number},index:number) => <Club name={club.name} index={index} country={club.country} value={club.value} image={club.image} title={club.european_titles} />)
+      let clubData :any  = data.map( (club: {name:string,country:string,value:number,image:string,european_titles:number},index:number) => <Club name={club.name} key={club.name} index={index} country={club.country} value={club.value} image={club.image} title={club.european_titles} />)
       if (typeof sortType === "string") {
           if (sortType === "true") {
             sortType = true
@@ -71,19 +72,19 @@ export const ClubList :FC = ():ReactElement  => {
    
     
     useEffect(() => {
-       
+       console.log(sort)
         sortClubs(sort)
           
     },[])
 
-      localStorage.setItem('sortState',`${sort}`)
+     localStorage.setItem('sortState',`${sort}`)
  
       return  (
               <div>
                 <MDBRow >
                   <NavBar onClick={onClick} />
                 </MDBRow>
-                <MDBRow >
+                <MDBRow>
                  {error ?  <div style={{marginTop:200, textAlign:'center',color:'red'}}>
                  <FormattedMessage id="error" defaultMessage="The data is not available at the moment." />
                  </div> : clubs}
